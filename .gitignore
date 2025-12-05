@@ -1,0 +1,23 @@
+# Compiler files
+cache/
+out/
+
+# Node modules
+node_modules/
+
+# Ignores development broadcast logs
+# 建议忽略所有 broadcast，防止泄露部署细节
+broadcast/
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+.env.*
+!.env.example
+localhost.json
+
+# System files
+.DS_Store
+Thumbs.db
