@@ -137,13 +137,6 @@ contract BitGuardVestingVault is Ownable {
         for (uint256 i = 0; i < scheduleCount; i++) {
             VestingSchedule storage schedule = vestingSchedules[beneficiary][i];
 
-            // Skip if revoked and fully settled (though revoked logic handles refunds immediately,
-            // there might be claimable amount calculated at revocation time if we supported partial claims before revocation.
-            // In this design, revocation refunds unvested. Vested amount remains claimable?
-            // The prompt says: "Revoke: refund unvested to Owner. Set revoked=true."
-            // It implies vested tokens should still be claimable or already claimed.
-            // Let's assume claim() handles what's currently vested.
-
             uint256 vestedAmount = _computeReleasableAmount(schedule);
             if (vestedAmount > 0) {
                 schedule.releasedAmount += vestedAmount;
